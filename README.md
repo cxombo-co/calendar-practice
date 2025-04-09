@@ -6,3 +6,5 @@ Features
     Dropdown Month Selection: Users can select a month from a dropdown menu.
 
     Dynamic Day Boxes: Based on the selected month, the application calculates the number of days and generates corresponding boxes.
+
+LIVE Preview: https://cxombo-co.github.io/calendar-practice/
