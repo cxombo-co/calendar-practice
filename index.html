@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="months">Select a Month:</label>
+        <select name="months" id="months">
+            <option value="none">--select--</option>
+            <option value="january">January</option>
+            <option value="febuary">Febuary</option>
+            <option value="march">March</option>
+            <option value="april">April</option>
+            <option value="may">May</option>
+            <option value="june">June</option>
+            <option value="july">July</option>
+            <option value="august">August</option>
+            <option value="september">September</option>
+            <option value="october">October</option>
+            <option value="november">November</option>
+            <option value="december">December</option>
+        </select>
+    </form>
+
+    <div id="box-container" style="margin-top: 20px;"></div>
+
+    <script>
+        const monthDropdown = document.getElementById('months');
+        const boxContainer = document.getElementById('box-container');
+        
+        function getMonthFromString(monthValue){
+            return new Date(Date.parse(monthValue +" 1, 2012")).getMonth()+1
+        }
+
+        function getDaysInMonth(monthValue) {
+            const defaultYear = 2025;
+            return new Date(defaultYear, monthValue, 0).getDate();
+        }
+
+        
+
+        monthDropdown.addEventListener('change', function () {
+            const selectedValue = getMonthFromString(this.value);
+            const convertedValue = getDaysInMonth(selectedValue);
+
+            boxContainer.innerHTML = '';
+
+            for (let i = 1; i <= convertedValue; i++) {
+                const dayBox = document.createElement('div');
+                dayBox.textContent = `${i}`;
+                dayBox.style.width = '100px';
+                dayBox.style.height = '100px';
+                dayBox.style.backgroundColor = '#f0f0f0';
+                dayBox.style.border = '1px solid #ccc';
+                dayBox.style.margin = '10px';
+                dayBox.style.display = 'inline-block';
+                dayBox.style.textAlign = 'center';
+                dayBox.style.lineHeight = '100px';
+
+                boxContainer.appendChild(dayBox);
+                
+            }
+        });
+
+    </script>
+</body>
+</html>
